@@ -8,7 +8,7 @@ import static org.mockito.Mockito.verify;
 
 import com.sg.bankclientaccount.business.domain.Transaction;
 import com.sg.bankclientaccount.business.exception.NegativeAmountException;
-import com.sg.bankclientaccount.business.port.output.TransactionRepositoryOutput;
+import com.sg.bankclientaccount.business.port.output.TransactionRepositoryPortOutput;
 import java.math.BigInteger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,11 +19,11 @@ public class DepositFeatureTest {
 
   private DepositFeature depositFeatureUnderTest;
 
-  private TransactionRepositoryOutput TransactionRepositoryOutputMock;
+  private TransactionRepositoryPortOutput TransactionRepositoryOutputMock;
 
   @BeforeEach
   void setUp() {
-    this.TransactionRepositoryOutputMock = Mockito.mock(TransactionRepositoryOutput.class);
+    this.TransactionRepositoryOutputMock = Mockito.mock(TransactionRepositoryPortOutput.class);
 
     this.depositFeatureUnderTest = new DepositFeature(TransactionRepositoryOutputMock);
   }

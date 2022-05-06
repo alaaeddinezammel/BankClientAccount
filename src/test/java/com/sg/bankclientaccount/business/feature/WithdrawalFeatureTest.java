@@ -10,7 +10,7 @@ import com.sg.bankclientaccount.business.domain.Transaction;
 import com.sg.bankclientaccount.business.domain.TransactionType;
 import com.sg.bankclientaccount.business.exception.BalanceNegativeWithdrawalException;
 import com.sg.bankclientaccount.business.exception.NegativeAmountException;
-import com.sg.bankclientaccount.business.port.output.TransactionRepositoryOutput;
+import com.sg.bankclientaccount.business.port.output.TransactionRepositoryPortOutput;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
@@ -22,11 +22,11 @@ import org.mockito.Mockito;
 public class WithdrawalFeatureTest {
 
   private WithdrawalFeature withdrawalFeatureUnderTest;
-  private TransactionRepositoryOutput transactionRepositoryOutputMock;
+  private TransactionRepositoryPortOutput transactionRepositoryOutputMock;
 
   @BeforeEach
   public void setUp() {
-    this.transactionRepositoryOutputMock = Mockito.mock(TransactionRepositoryOutput.class);
+    this.transactionRepositoryOutputMock = Mockito.mock(TransactionRepositoryPortOutput.class);
     this.withdrawalFeatureUnderTest = new WithdrawalFeature(this.transactionRepositoryOutputMock);
   }
 
@@ -53,7 +53,7 @@ public class WithdrawalFeatureTest {
     // when
     BigInteger moneyToRetrieve = BigInteger.valueOf(100);
     List<Transaction> transactions = List.of(
-        new Transaction(TransactionType.WITHDRAWL, LocalDate.now(), BigInteger.valueOf(0),
+        new Transaction(TransactionType.WITHDRAWAL, LocalDate.now(), BigInteger.valueOf(0),
             BigInteger.valueOf(0)));
     String message = "The account Balance, is negative.";
     // given

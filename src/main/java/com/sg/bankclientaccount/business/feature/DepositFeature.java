@@ -4,15 +4,15 @@ import com.sg.bankclientaccount.business.domain.Transaction;
 import com.sg.bankclientaccount.business.domain.TransactionType;
 import com.sg.bankclientaccount.business.exception.NegativeAmountException;
 import com.sg.bankclientaccount.business.port.input.DepositPortInput;
-import com.sg.bankclientaccount.business.port.output.TransactionRepositoryOutput;
+import com.sg.bankclientaccount.business.port.output.TransactionRepositoryPortOutput;
 import java.math.BigInteger;
 import java.time.LocalDate;
 
 public class DepositFeature implements DepositPortInput {
 
-    private final TransactionRepositoryOutput transactionRepository;
+    private final TransactionRepositoryPortOutput transactionRepository;
 
-    public DepositFeature(TransactionRepositoryOutput transactionRepositoryAction) {
+    public DepositFeature(TransactionRepositoryPortOutput transactionRepositoryAction) {
         this.transactionRepository = transactionRepositoryAction;
     }
   @Override

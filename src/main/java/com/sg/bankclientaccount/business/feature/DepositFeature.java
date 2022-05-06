@@ -3,12 +3,12 @@ package com.sg.bankclientaccount.business.feature;
 import com.sg.bankclientaccount.business.domain.Transaction;
 import com.sg.bankclientaccount.business.domain.TransactionType;
 import com.sg.bankclientaccount.business.exception.NegativeAmountException;
-import com.sg.bankclientaccount.business.port.DepositPort;
-import com.sg.bankclientaccount.business.port.TransactionRepositoryOutput;
+import com.sg.bankclientaccount.business.port.input.DepositPortInput;
+import com.sg.bankclientaccount.business.port.output.TransactionRepositoryOutput;
 import java.math.BigInteger;
 import java.time.LocalDate;
 
-public class DepositFeature implements DepositPort {
+public class DepositFeature implements DepositPortInput {
 
     private final TransactionRepositoryOutput transactionRepository;
 

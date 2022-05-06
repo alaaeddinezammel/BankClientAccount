@@ -1,10 +1,13 @@
 package com.sg.bankclientaccount.business.feature;
 
 import static java.util.Collections.emptyList;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 import com.sg.bankclientaccount.business.domain.Transaction;
+import com.sg.bankclientaccount.business.exception.NegativeAmountException;
 import com.sg.bankclientaccount.business.port.TransactionRepositoryOutput;
 import java.math.BigInteger;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,7 +29,7 @@ public class DepositFeatureTest {
   }
 
   @Test
-  void shouldMakeADeposit() {
+  void shouldMakeADeposit() throws NegativeAmountException {
     // when
     BigInteger amountToSave = BigInteger.valueOf(100);
 
@@ -34,13 +37,26 @@ public class DepositFeatureTest {
     ArgumentCaptor<Transaction> depositArgumentCaptor = ArgumentCaptor.forClass(Transaction.class);
     given(TransactionRepositoryOutputMock.findAllTransactions()).willReturn(emptyList());
 
-    Transaction depositArgument = depositArgumentCaptor.getValue();
+    depositFeatureUnderTest.deposit(amountToSave);
     verify(TransactionRepositoryOutputMock).saveTransaction(depositArgumentCaptor.capture());
+    Transaction depositArgument = depositArgumentCaptor.getValue();
 
     // then
     verify(TransactionRepositoryOutputMock).saveTransaction(depositArgument);
   }
 
-
+  @Test
+  void shouldFailDepositWhenNegativeAmount() {
+    // when
+    BigInteger amountToSave = BigInteger.valueOf(-100);
+    // given
+    String expectedMessage = "Impossible to make a negative transaction";
+    Exception exception = assertThrows(NegativeAmountException.class,
+        () -> depositFeatureUnderTest.deposit(amountToSave));
+    String actualMessage = exception.getMessage();
+    // then
+    assertTrue(actualMessage.contains(expectedMessage));
+  }
 }
+
 

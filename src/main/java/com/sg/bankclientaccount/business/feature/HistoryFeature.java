@@ -1,21 +1,28 @@
 package com.sg.bankclientaccount.business.feature;
 
 import com.sg.bankclientaccount.business.port.input.HistoryPortInput;
-import com.sg.bankclientaccount.business.port.output.HistoryPrinterPortOutput;
+import com.sg.bankclientaccount.business.port.output.HistoryFormatterOutput;
+import com.sg.bankclientaccount.business.port.output.TransactionRepositoryPortOutput;
 
 public class HistoryFeature implements HistoryPortInput {
 
   private static final String OPERATIONS_HEADER = "OPERATION | DATE | AMOUNT | BALANCE";
 
-  private final HistoryPrinterPortOutput historyPrinterPortOutput;
+  private final TransactionRepositoryPortOutput transactionRepositoryPortOutput;
+  private final HistoryFormatterOutput historyFormatterOutput;
 
-  public HistoryFeature(HistoryPrinterPortOutput historyPrinterPortOutput) {
-    this.historyPrinterPortOutput = historyPrinterPortOutput;
+  public HistoryFeature(TransactionRepositoryPortOutput transactionRepositoryPortOutput,
+      HistoryFormatterOutput historyFormatterOutput) {
+    this.transactionRepositoryPortOutput = transactionRepositoryPortOutput;
+    this.historyFormatterOutput = historyFormatterOutput;
+  }
+
+  public void printStatement() {
   }
 
   @Override
   public void findOperations() {
-    historyPrinterPortOutput.print(OPERATIONS_HEADER);
+    this.historyFormatterOutput.print(this.transactionRepositoryPortOutput.findAllTransactions());
 
   }
 }

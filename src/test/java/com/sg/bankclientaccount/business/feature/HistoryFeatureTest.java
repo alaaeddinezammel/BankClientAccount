@@ -1,11 +1,16 @@
 package com.sg.bankclientaccount.business.feature;
 
-import static org.assertj.core.api.Fail.fail;
-import static org.mockito.ArgumentMatchers.isA;
-import static org.mockito.Mockito.doNothing;
+import static java.util.Collections.EMPTY_LIST;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
-import com.sg.bankclientaccount.business.port.output.HistoryPrinterPortOutput;
+import com.sg.bankclientaccount.business.domain.Transaction;
+import com.sg.bankclientaccount.business.domain.TransactionType;
+import com.sg.bankclientaccount.business.port.output.HistoryFormatterOutput;
+import com.sg.bankclientaccount.business.port.output.TransactionRepositoryPortOutput;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -14,29 +19,47 @@ public class HistoryFeatureTest {
 
   private HistoryFeature historyFeature;
 
-  private HistoryPrinterPortOutput historyPrinterPortOutput;
+  private HistoryFormatterOutput historyFormatterOutput;
+
+  private TransactionRepositoryPortOutput transactionRepositoryPortOutputMock;
+
 
   @BeforeEach
   void setUp() {
-    this.historyPrinterPortOutput = Mockito.mock(HistoryPrinterPortOutput.class);
+    this.transactionRepositoryPortOutputMock = Mockito.mock(TransactionRepositoryPortOutput.class);
 
-    this.historyFeature = new HistoryFeature(historyPrinterPortOutput);
+    this.historyFormatterOutput = Mockito.mock(HistoryFormatterOutput.class);
+
+    this.historyFeature = new HistoryFeature(transactionRepositoryPortOutputMock,
+        historyFormatterOutput);
   }
 
   @Test
   void shouldPrintEmptyHistory() {
-    // When
-    doNothing().when(historyPrinterPortOutput).print(isA(String.class));
+    // when
+    var transactions = EMPTY_LIST;
 
-    historyFeature.findOperations();
+    // given
+    given(transactionRepositoryPortOutputMock.findAllTransactions()).willReturn(transactions);
+    historyFeature.printStatement();
 
-    // Then
-    verify(historyPrinterPortOutput).print("OPERATION | DATE | AMOUNT | BALANCE");
+    // then
+    verify(historyFormatterOutput).print(transactions);
   }
 
   @Test
-  void shouldRenderHistory() {
-    fail("Not yet implemented");
+  void shouldPrintHistoryWithOneTransaction() {
+    // when
+    Transaction transaction = new Transaction(TransactionType.DEPOSIT, LocalDate.of(2021, 11, 28),
+        BigInteger.valueOf(1000), BigInteger.valueOf(1000));
+
+    List<Transaction> transactions = List.of(transaction);
+    // given
+    given(transactionRepositoryPortOutputMock.findAllTransactions()).willReturn(transactions);
+
+    historyFeature.printStatement();
+    // then
+    verify(historyFormatterOutput).print(transactions);
   }
 
 

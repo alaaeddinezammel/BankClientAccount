@@ -1,10 +1,9 @@
-package com.sg.bankclientaccount.adapter;
+package com.sg.bankclientaccount.adapter.transaction;
 
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-import com.sg.bankclientaccount.adapter.transaction.TransactionRepositoryAdapter;
 import com.sg.bankclientaccount.business.domain.Transaction;
 import com.sg.bankclientaccount.business.domain.TransactionType;
 import java.math.BigInteger;

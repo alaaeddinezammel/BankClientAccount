@@ -1,4 +1,4 @@
-package com.sg.bankclientaccount.adapter;
+package com.sg.bankclientaccount.adapter.history;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.atLeast;
@@ -7,7 +7,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.sg.bankclientaccount.adapter.history.HistoryFormatterAdapter;
 import com.sg.bankclientaccount.adapter.transaction.TransactionFormatterAdapter;
 import com.sg.bankclientaccount.business.domain.Transaction;
 import com.sg.bankclientaccount.business.domain.TransactionType;

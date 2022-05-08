@@ -10,11 +10,12 @@ import java.time.LocalDate;
 
 public class DepositFeature implements DepositPortInput {
 
-    private final TransactionRepositoryPortOutput transactionRepository;
+  private final TransactionRepositoryPortOutput transactionRepository;
 
-    public DepositFeature(TransactionRepositoryPortOutput transactionRepositoryAction) {
-        this.transactionRepository = transactionRepositoryAction;
-    }
+  public DepositFeature(TransactionRepositoryPortOutput transactionRepositoryAction) {
+    this.transactionRepository = transactionRepositoryAction;
+  }
+
   @Override
   public void deposit(BigInteger depositAmount) throws NegativeAmountException {
     if (depositAmount.compareTo(BigInteger.ZERO) < 0) {
@@ -29,6 +30,7 @@ public class DepositFeature implements DepositPortInput {
         currentBalance.add(depositAmount));
     transactionRepository.saveTransaction(transaction);
   }
+
   private BigInteger GetCurrentBalance() {
     return transactionRepository.findAllTransactions().stream()
         .map(Transaction::getAmount)

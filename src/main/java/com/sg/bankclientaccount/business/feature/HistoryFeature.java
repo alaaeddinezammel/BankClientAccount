@@ -6,7 +6,6 @@ import com.sg.bankclientaccount.business.port.output.transaction.TransactionRepo
 
 public class HistoryFeature implements HistoryPortInput {
 
-  private static final String OPERATIONS_HEADER = "OPERATION | DATE | AMOUNT | BALANCE";
 
   private final TransactionRepositoryPortOutput transactionRepositoryPortOutput;
   private final HistoryFormatterOutput historyFormatterOutput;

@@ -41,11 +41,12 @@ public class HistoryFeatureTest {
 
     // given
     given(transactionRepositoryPortOutputMock.findAllTransactions()).willReturn(transactions);
-    historyFeature.printStatement();
+    historyFeature.printHistory();
 
     // then
     verify(historyFormatterOutput).print(transactions);
   }
+
 
   @Test
   void shouldPrintHistoryWithOneTransaction() {
@@ -57,7 +58,7 @@ public class HistoryFeatureTest {
     // given
     given(transactionRepositoryPortOutputMock.findAllTransactions()).willReturn(transactions);
 
-    historyFeature.printStatement();
+    historyFeature.printHistory();
     // then
     verify(historyFormatterOutput).print(transactions);
   }

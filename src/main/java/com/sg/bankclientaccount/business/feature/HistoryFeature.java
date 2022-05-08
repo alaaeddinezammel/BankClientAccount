@@ -17,7 +17,8 @@ public class HistoryFeature implements HistoryPortInput {
     this.historyFormatterOutput = historyFormatterOutput;
   }
 
-  public void printStatement() {
+  public void printHistory() {
+    this.historyFormatterOutput.print(this.transactionRepositoryPortOutput.findAllTransactions());
   }
 
   @Override

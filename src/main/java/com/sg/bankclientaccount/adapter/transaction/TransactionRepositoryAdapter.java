@@ -1,7 +1,7 @@
-package com.sg.bankclientaccount.adapter;
+package com.sg.bankclientaccount.adapter.transaction;
 
 import com.sg.bankclientaccount.business.domain.Transaction;
-import com.sg.bankclientaccount.business.port.output.TransactionRepositoryPortOutput;
+import com.sg.bankclientaccount.business.port.output.transaction.TransactionRepositoryPortOutput;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package com.sg.bankclientaccount.adapter;
+package com.sg.bankclientaccount.adapter.transaction;
 
 import com.sg.bankclientaccount.business.domain.Transaction;
-import com.sg.bankclientaccount.business.port.output.TransactionFormatterOutput;
+import com.sg.bankclientaccount.business.port.output.transaction.TransactionFormatterOutput;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 

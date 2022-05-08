@@ -1,9 +1,9 @@
-package com.sg.bankclientaccount.adapter;
+package com.sg.bankclientaccount.adapter.history;
 
 import com.sg.bankclientaccount.business.domain.Transaction;
-import com.sg.bankclientaccount.business.port.output.HistoryFormatterOutput;
-import com.sg.bankclientaccount.business.port.output.HistoryPrinterPortOutput;
-import com.sg.bankclientaccount.business.port.output.TransactionFormatterOutput;
+import com.sg.bankclientaccount.business.port.output.history.HistoryFormatterOutput;
+import com.sg.bankclientaccount.business.port.output.history.HistoryPrinterPortOutput;
+import com.sg.bankclientaccount.business.port.output.transaction.TransactionFormatterOutput;
 import java.util.Comparator;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.sg.bankclientaccount.business.port.output;
+package com.sg.bankclientaccount.business.port.output.history;
 
 import com.sg.bankclientaccount.business.domain.Transaction;
 import java.util.List;

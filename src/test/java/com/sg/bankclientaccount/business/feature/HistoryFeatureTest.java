@@ -6,8 +6,8 @@ import static org.mockito.Mockito.verify;
 
 import com.sg.bankclientaccount.business.domain.Transaction;
 import com.sg.bankclientaccount.business.domain.TransactionType;
-import com.sg.bankclientaccount.business.port.output.HistoryFormatterOutput;
-import com.sg.bankclientaccount.business.port.output.TransactionRepositoryPortOutput;
+import com.sg.bankclientaccount.business.port.output.history.HistoryFormatterOutput;
+import com.sg.bankclientaccount.business.port.output.transaction.TransactionRepositoryPortOutput;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
@@ -17,7 +17,7 @@ import org.mockito.Mockito;
 
 public class HistoryFeatureTest {
 
-  private HistoryFeature historyFeature;
+  private HistoryFeature historyFeatureUnderTest;
 
   private HistoryFormatterOutput historyFormatterOutput;
 
@@ -30,7 +30,7 @@ public class HistoryFeatureTest {
 
     this.historyFormatterOutput = Mockito.mock(HistoryFormatterOutput.class);
 
-    this.historyFeature = new HistoryFeature(transactionRepositoryPortOutputMock,
+    this.historyFeatureUnderTest = new HistoryFeature(transactionRepositoryPortOutputMock,
         historyFormatterOutput);
   }
 
@@ -41,7 +41,7 @@ public class HistoryFeatureTest {
 
     // given
     given(transactionRepositoryPortOutputMock.findAllTransactions()).willReturn(transactions);
-    historyFeature.printHistory();
+    historyFeatureUnderTest.printHistory();
 
     // then
     verify(historyFormatterOutput).print(transactions);
@@ -58,7 +58,7 @@ public class HistoryFeatureTest {
     // given
     given(transactionRepositoryPortOutputMock.findAllTransactions()).willReturn(transactions);
 
-    historyFeature.printHistory();
+    historyFeatureUnderTest.printHistory();
     // then
     verify(historyFormatterOutput).print(transactions);
   }

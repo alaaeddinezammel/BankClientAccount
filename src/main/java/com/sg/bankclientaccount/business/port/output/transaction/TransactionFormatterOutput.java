@@ -1,4 +1,4 @@
-package com.sg.bankclientaccount.business.port.output;
+package com.sg.bankclientaccount.business.port.output.transaction;
 
 import com.sg.bankclientaccount.business.domain.Transaction;
 

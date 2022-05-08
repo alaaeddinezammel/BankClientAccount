@@ -5,7 +5,7 @@ import com.sg.bankclientaccount.business.domain.TransactionType;
 import com.sg.bankclientaccount.business.exception.BalanceNegativeWithdrawalException;
 import com.sg.bankclientaccount.business.exception.NegativeAmountException;
 import com.sg.bankclientaccount.business.port.input.WithdrawalPortInput;
-import com.sg.bankclientaccount.business.port.output.TransactionRepositoryPortOutput;
+import com.sg.bankclientaccount.business.port.output.transaction.TransactionRepositoryPortOutput;
 import java.math.BigInteger;
 import java.time.LocalDate;
 

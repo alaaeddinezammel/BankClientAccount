@@ -1,6 +1,6 @@
-package com.sg.bankclientaccount.adapter;
+package com.sg.bankclientaccount.adapter.history;
 
-import com.sg.bankclientaccount.business.port.output.HistoryPrinterPortOutput;
+import com.sg.bankclientaccount.business.port.output.history.HistoryPrinterPortOutput;
 
 public class HistoryPrinterAdapter implements HistoryPrinterPortOutput {
 

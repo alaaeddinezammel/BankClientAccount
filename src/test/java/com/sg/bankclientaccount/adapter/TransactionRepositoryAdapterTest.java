@@ -4,6 +4,7 @@ package com.sg.bankclientaccount.adapter;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+import com.sg.bankclientaccount.adapter.transaction.TransactionRepositoryAdapter;
 import com.sg.bankclientaccount.business.domain.Transaction;
 import com.sg.bankclientaccount.business.domain.TransactionType;
 import java.math.BigInteger;
@@ -14,11 +15,11 @@ import org.junit.jupiter.api.Test;
 
 public class TransactionRepositoryAdapterTest {
 
-  private TransactionRepositoryAdapter transactionRepositoryAdapter;
+  private TransactionRepositoryAdapter transactionRepositoryAdapterUnderTest;
 
   @BeforeEach
   public void setUp() {
-    this.transactionRepositoryAdapter = new TransactionRepositoryAdapter();
+    this.transactionRepositoryAdapterUnderTest = new TransactionRepositoryAdapter();
   }
 
   @Test
@@ -29,7 +30,7 @@ public class TransactionRepositoryAdapterTest {
         amountToSave, amountToSave);
 
     List<Transaction> transactions = List.of(transaction);
-    transactionRepositoryAdapter.saveTransaction(transaction);
+    transactionRepositoryAdapterUnderTest.saveTransaction(transaction);
 
     // then
     assertThat(transactions.get(0), equalTo(transaction));
@@ -46,10 +47,10 @@ public class TransactionRepositoryAdapterTest {
     Transaction transactionTwo = new Transaction(TransactionType.WITHDRAWAL,
         LocalDate.of(2021, 10, 30), BigInteger.valueOf(-130), BigInteger.valueOf(800));
 
-    List<Transaction> transactions = transactionRepositoryAdapter.findAllTransactions();
+    List<Transaction> transactions = transactionRepositoryAdapterUnderTest.findAllTransactions();
 
-    transactionRepositoryAdapter.saveTransaction(transactionOne);
-    transactionRepositoryAdapter.saveTransaction(transactionTwo);
+    transactionRepositoryAdapterUnderTest.saveTransaction(transactionOne);
+    transactionRepositoryAdapterUnderTest.saveTransaction(transactionTwo);
 
     // Then
     assertThat(transactions.get(0), equalTo(transactionOne));

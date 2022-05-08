@@ -8,7 +8,7 @@ import static org.mockito.Mockito.verify;
 
 import com.sg.bankclientaccount.business.domain.Transaction;
 import com.sg.bankclientaccount.business.exception.NegativeAmountException;
-import com.sg.bankclientaccount.business.port.output.TransactionRepositoryPortOutput;
+import com.sg.bankclientaccount.business.port.output.transaction.TransactionRepositoryPortOutput;
 import java.math.BigInteger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

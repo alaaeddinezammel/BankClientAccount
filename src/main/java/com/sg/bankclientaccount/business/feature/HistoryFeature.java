@@ -1,8 +1,8 @@
 package com.sg.bankclientaccount.business.feature;
 
 import com.sg.bankclientaccount.business.port.input.HistoryPortInput;
-import com.sg.bankclientaccount.business.port.output.HistoryFormatterOutput;
-import com.sg.bankclientaccount.business.port.output.TransactionRepositoryPortOutput;
+import com.sg.bankclientaccount.business.port.output.history.HistoryFormatterOutput;
+import com.sg.bankclientaccount.business.port.output.transaction.TransactionRepositoryPortOutput;
 
 public class HistoryFeature implements HistoryPortInput {
 
